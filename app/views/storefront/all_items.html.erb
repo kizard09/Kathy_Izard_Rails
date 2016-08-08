@@ -7,6 +7,7 @@
         <div class="well center-it">
             <p><%= image_tag product.image.url, width: '100%' %></p>
             <h3><%= link_to product.name, product %></h3>
+            <h3><%= link_to product.brand %></h3>
             <p><%= number_to_currency product.price %></p>
             <p>
 			    <a href="#" data-toggle="modal" data-target="#myModal_<%= product.id %>">
