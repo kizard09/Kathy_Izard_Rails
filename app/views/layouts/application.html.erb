@@ -37,7 +37,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Brands <span class="caret"></span></a>
         <ul class="dropdown-menu">
             <% @brands.each do |brand| %>
-            <li><%= link_to brand, root_path%></li>
+              <li><%= link_to brand, branding_path(brand: brand) %></li>
             <% end %>
         </ul>
 		</li>

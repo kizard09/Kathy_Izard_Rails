@@ -8,11 +8,12 @@ class ApplicationController < ActionController::Base
   def categories
   	@categories = Category.all
   end
+  
+  def brands
+    @brands = Product.pluck(:brand).sort.uniq!
+    if @brands == nil
+        @brands = Product.pluck(:brand).sort
+    end
+  end
 
-  # def brands
-  # 	@brands = Product.pluck(:brand).sort.uniq!
-  # 	if @brands == nil
-  # 		@brands = Product.pluck(:brand).sort
-  # 	end
-  # end
 end
