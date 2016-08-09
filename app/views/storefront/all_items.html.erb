@@ -5,6 +5,7 @@
     <% @products.each do |product| %>
     <div class="col-md-4">
         <div class="well center-it">
+        
             <p><%= image_tag product.image.url, width: '100%' %></p>
             <h3><%= link_to product.name, product %></h3>
             <h3><%= link_to product.brand %></h3>

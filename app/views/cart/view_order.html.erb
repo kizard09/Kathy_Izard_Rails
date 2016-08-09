@@ -1,0 +1,6 @@
+<% @line_items.each do |line_item| %>
+	<ul>
+		<li><%= line_item.product.name %></li>
+	</ul>
+<% end %>
+<%= link_to "Proceed to Checkout?", checkout_path %>

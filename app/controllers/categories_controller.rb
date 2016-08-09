@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /categories
   # GET /categories.json
   def index
@@ -66,6 +66,14 @@ class CategoriesController < ApplicationController
     def set_category
       @category = Category.find(params[:id])
     end
+    
+    def check_admin
+      unless current_user.role == "admin"
+        flash[:alert] = "You don't have that level of clearance bubba!"
+        redirect_to root_path
+      end
+    end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
