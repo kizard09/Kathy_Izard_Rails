@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   before_filter :categories, :brands
 
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
   def categories
   	@categories = Category.all
   end
@@ -14,6 +16,12 @@ class ApplicationController < ActionController::Base
     if @brands == nil
         @brands = Product.pluck(:brand).sort
     end
+  end
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:role])
   end
 
 end

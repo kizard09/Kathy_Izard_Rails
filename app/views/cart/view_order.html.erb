@@ -1,6 +1,10 @@
+<% if @line_items.length > 0 %>
 <% @line_items.each do |line_item| %>
 	<ul>
 		<li><%= line_item.product.name %></li>
 	</ul>
 <% end %>
 <%= link_to "Proceed to Checkout?", checkout_path %>
+<% else %>
+<h2>You have no items in your cart.</h2>
+<% end %>

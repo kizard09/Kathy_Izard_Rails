@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
-  # before_action :check_admin, :except [:show]
+  before_action :check_admin, except: [:show]
   # GET /products
   # GET /products.json
   def index
@@ -66,6 +66,14 @@ class ProductsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def check_admin
+
+      unless current_user.role == "admin"
+        flash[:alert] = "You don't have that level of clearance bubba!"
+        redirect_to root_path
+      end
+    end
+
     def set_product
       @product = Product.find(params[:id])
     end
